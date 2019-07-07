@@ -24,7 +24,8 @@ public class ChartWebSocketHandler extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		System.out.println(session.getId());
-		chartObj CO = new chartObj(1,90,10);
+		Double[] COData = Constance.getcalculatedChartData();
+		chartObj CO = new chartObj(1,COData);
     	if(!sessionMap.containsKey(session.getId())) {
 			System.out.println("Added:"+session.getId());
         	sessionMap.put(session.getId(), session);

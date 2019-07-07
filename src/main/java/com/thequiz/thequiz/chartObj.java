@@ -5,7 +5,7 @@ import java.util.List;
 
 public class chartObj {
 	
-	public chartObj(Integer i,Integer...lArr) {
+	public chartObj(Integer i,Double...lArr) {
      	this.setQ(i);
     	this.setVal(Arrays.asList(lArr));
 	}
