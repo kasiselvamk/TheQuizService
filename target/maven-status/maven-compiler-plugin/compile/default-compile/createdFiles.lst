@@ -2,6 +2,8 @@ com/thequiz/thequiz/QuizController.class
 com/thequiz/thequiz/WebSocketConfiguration.class
 com/thequiz/thequiz/Resp.class
 com/thequiz/thequiz/ThequizApplication.class
+com/thequiz/thequiz/Constance.class
+com/thequiz/thequiz/UserSubmitPayload.class
 com/thequiz/thequiz/ChartWebSocketHandler.class
 com/thequiz/thequiz/chartObj.class
 com/thequiz/thequiz/dataObj.class
