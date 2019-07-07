@@ -66,8 +66,7 @@ public class QuizController {
 		Resp resp = new Resp();
 		resp.setQ(1);
 		resp.setTitle("Answer for Question " + resp.getQ());
-		resp.setAns(
-				"options are D and E. This question investigates a small part of the rules by which names are resolved, the distinction between static and nonstatic variables, and access to variables from a static context. Here, we present a simplified description of some of the rules laid out in Java Language Specification sections 6 and 15. Our discussion will be nowhere near as complete as those sections, in either scope or detail, but we aim to present a perspective that has sufficient scope to answer this question and others like it. The approach presented is sound as far as it goes, but it does have limitations. Undoubtedly some readers will have knowledge way beyond the intended audience of this question, and they will likely be able to see exceptions to this description.");
+		resp.setAns("options are D and E.");
 		resp.setQdate("01011988");
 
 		for (int i = 0; i < CORRECT_ANS.size(); i++) {
