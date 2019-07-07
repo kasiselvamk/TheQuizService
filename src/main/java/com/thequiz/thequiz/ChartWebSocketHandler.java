@@ -18,7 +18,6 @@ public class ChartWebSocketHandler extends TextWebSocketHandler {
 
 	@Override
 	public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
-		//session.sendMessage(new TextMessage("Hello " ));
 	}
 	
 	@Override

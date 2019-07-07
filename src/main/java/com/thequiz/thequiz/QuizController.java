@@ -23,7 +23,7 @@ public class QuizController {
 	public static Gson gson = new Gson();
 	public static List<Boolean> CORRECT_ANS = Arrays.asList(false, false, false, true, true);
 	
-	@CrossOrigin(origins = "*")
+	//@CrossOrigin(origins = "*")
 	@RequestMapping(value = "TheQuiz/qbd", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getQuizQuestionsByDate(@RequestParam(value = "d", defaultValue = "") String date) {
 		dataObj DO = new dataObj();
@@ -48,14 +48,14 @@ public class QuizController {
 		return gson.toJson(DO);
 	}
 
-	@CrossOrigin(origins = "*")
+	//@CrossOrigin(origins = "*")
 	@RequestMapping(value = "TheQuiz/cd", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getQuizChartByDate(@RequestParam(value = "d", defaultValue = "") String date) {
 		chartObj CO = new chartObj(1, 0.0, 0.0);
 		return gson.toJson(CO);
 	}
 
-	@CrossOrigin(origins = "*")
+	//@CrossOrigin(origins = "*")
 	@RequestMapping(value = "TheQuiz/sbd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String submitQuiz(@RequestBody String payload) {
 		Constance.NO_SUBMITS++;
