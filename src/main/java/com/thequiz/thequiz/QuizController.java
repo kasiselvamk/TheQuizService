@@ -2,6 +2,7 @@ package com.thequiz.thequiz;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,7 @@ import com.google.gson.Gson;
 public class QuizController {
 	public static DateFormat df = new SimpleDateFormat("ddMMyyyy");
 	public static Gson gson = new Gson();
-	public static List<Boolean> CORRECT_ANS = Arrays.asList(false, false, false, true, true);
+	public static List<Boolean> CORRECT_ANS = Arrays.asList(true, false, false, false);
 	
 	//@CrossOrigin(origins = "*")
 	@RequestMapping(value = "TheQuiz/qbd", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -31,13 +32,15 @@ public class QuizController {
 			date = df.format(new Date());
 		}
 		System.out.println("date:" + date);
-		String p1 = "The objective is to apply the <span class='s-code'>static</span> keyword to methods and fields.Given the following classes:";
-		String p2 = "public class Test {<BR>int result = -1;<BR>}<BR>public class CodeTest extends Test {<BR>public static void main(String[] args) {<BR>// line n1<BR>}<BR>}";
-		String p3 = "What two lines added independently at line n1 will make the code compile successfully?<BR>Choose two.";
-		List opt = Arrays.asList(
-				"A.) result = 0;,B.) this.result = 0;,C.) super.result = 0;,D.) new Test().result = 0;,E.) new CodeTest().result = 0;"
-						.split(","));
-
+		String p1 = "The objective is to use java.util.concurrent collections and classes, including <span class='s-code'>CyclicBarrier</span> and <span class='s-code'>CopyOnWriteArrayList</span>. Given the following <span class='s-code'>CBTest</span> class:";
+		String p2 = "import static java.lang.System.out;<BR> public class CBTest {<BR> private List<Integer> results =<BR> Collections.synchronizedList(new ArrayList<>());<BR> class Calculator extends Thread {<BR> CyclicBarrier cb;<BR> int param;<BR> Calculator(CyclicBarrier cb, int param) {<BR> this.cb = cb;<BR> this.param = param;<BR> }<BR> public void run() {<BR> try {<BR> results.add(param * param);<BR> cb.await();<BR> } catch (Exception e) {<BR> }<BR> }<BR> }<BR> void doCalculation() {<BR> // add your code here<BR> }<BR> public static void main(String[] args) {<BR> new CBTest().doCalculation();<BR> }<BR>}<BR>";
+		String p3 = "Which code fragment when added to the doCalculation method independently will make the code reliably print 13 to the console?<BR>Choose one.";
+		List opt = new ArrayList<String>();
+		opt.add(Arrays.asList( "A.) CyclicBarrier cb = new CyclicBarrier(2, () -> {# out.print(results.stream().mapToInt(v -> v.intValue()).sum());# });# new Calculator(cb, 2).start();# new Calculator(cb, 3).start();#".split("#")));
+		opt.add(Arrays.asList( "B.) CyclicBarrier cb = new CyclicBarrier(2);<BR> out.print(results.stream().mapToInt(v -> v.intValue()).sum());<BR> new Calculator(cb, 2).start();<BR> new Calculator(cb, 3).start();<BR>".split("<BR>")));
+	    opt.add(Arrays.asList( "C.) CyclicBarrier cb = new CyclicBarrier(3);<BR> new Calculator(cb, 2).start();<BR> new Calculator(cb, 3).start();<BR> cb.await();<BR> out.print(results.stream().mapToInt(v -> v.intValue()).sum());<BR>".split("<BR>")));;
+        opt.add(Arrays.asList( "D.) CyclicBarrier cb = new CyclicBarrier(2); <BR> new Calculator(cb, 2).start();<BR> new Calculator(cb, 3).start();<BR> out.print(results.stream().mapToInt(v -> v.intValue()).sum());<BR>".split("<BR>")));
+			 
 		DO.setQ(1);
 		DO.setP1(p1);
 		DO.setP2(p2);
@@ -66,7 +69,7 @@ public class QuizController {
 		Resp resp = new Resp();
 		resp.setQ(1);
 		resp.setTitle("Answer for Question " + resp.getQ());
-		resp.setAns("options are D and E.");
+		resp.setAns("The CyclicBarrier class is a feature of the java.util.concurrent package and it provides timing synchronization among threads, while also ensuring that data written by those threads prior to the synchronization is visible among those threads (this is the so-called “happensbefore” relationship). These problems might otherwise have been addressed using the synchronized, wait, and notify mechanisms, but they are generally considered low-level and harder to use correctly.");
 		resp.setQdate("01011988");
 
 		for (int i = 0; i < CORRECT_ANS.size(); i++) {

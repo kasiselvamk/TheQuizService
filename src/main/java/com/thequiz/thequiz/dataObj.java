@@ -27,10 +27,10 @@ public class dataObj {
 	public void setP3(String p3) {
 		this.p3 = p3;
 	}
-	public List getOpt() {
+	public List<List<String>> getOpt() {
 		return opt;
 	}
-	public void setOpt(List opt) {
+	public void setOpt(List<List<String>> opt) {
 		this.opt = opt;
 	}
 	Integer q;
@@ -44,5 +44,5 @@ public class dataObj {
 	public void setQdate(String qdate) {
 		this.qdate = qdate;
 	}
-	List opt;
+	List<List<String>> opt;
 }
