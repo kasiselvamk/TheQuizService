@@ -69,7 +69,7 @@ public class QuizController {
 		Resp resp = new Resp();
 		resp.setQ(1);
 		resp.setTitle("Answer for Question " + resp.getQ());
-		resp.setAns("The CyclicBarrier class is a feature of the java.util.concurrent package and it provides timing synchronization among threads, while also ensuring that data written by those threads prior to the synchronization is visible among those threads (this is the so-called “happensbefore” relationship). These problems might otherwise have been addressed using the synchronized, wait, and notify mechanisms, but they are generally considered low-level and harder to use correctly.");
+		resp.setAns("The correct option is A. The CyclicBarrier class is a feature of the java.util.concurrent package and it provides timing synchronization among threads, while also ensuring that data written by those threads prior to the synchronization is visible among those threads (this is the so-called “happensbefore” relationship). These problems might otherwise have been addressed using the synchronized, wait, and notify mechanisms, but they are generally considered low-level and harder to use correctly.");
 		resp.setQdate("01011988");
 
 		for (int i = 0; i < CORRECT_ANS.size(); i++) {
