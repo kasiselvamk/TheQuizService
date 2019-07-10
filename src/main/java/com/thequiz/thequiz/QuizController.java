@@ -22,9 +22,9 @@ import com.google.gson.Gson;
 public class QuizController {
 	public static DateFormat df = new SimpleDateFormat("ddMMyyyy");
 	public static Gson gson = new Gson();
-	public static List<Boolean> CORRECT_ANS = Arrays.asList(true, false, false, false);
+	public static List<Boolean> CORRECT_ANS = Arrays.asList(false, true, false, false,false);
 	
-	//@CrossOrigin(origins = "*")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "TheQuiz/qbd", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getQuizQuestionsByDate(@RequestParam(value = "d", defaultValue = "") String date) {
 		dataObj DO = new dataObj();
@@ -32,33 +32,36 @@ public class QuizController {
 			date = df.format(new Date());
 		}
 		System.out.println("date:" + date);
-		String p1 = "The objective is to use java.util.concurrent collections and classes, including <span class='s-code'>CyclicBarrier</span> and <span class='s-code'>CopyOnWriteArrayList</span>. Given the following <span class='s-code'>CBTest</span> class:";
-		String p2 = "import static java.lang.System.out;<BR> public class CBTest {<BR> private List<Integer> results =<BR> Collections.synchronizedList(new ArrayList<>());<BR> class Calculator extends Thread {<BR> CyclicBarrier cb;<BR> int param;<BR> Calculator(CyclicBarrier cb, int param) {<BR> this.cb = cb;<BR> this.param = param;<BR> }<BR> public void run() {<BR> try {<BR> results.add(param * param);<BR> cb.await();<BR> } catch (Exception e) {<BR> }<BR> }<BR> }<BR> void doCalculation() {<BR> // add your code here<BR> }<BR> public static void main(String[] args) {<BR> new CBTest().doCalculation();<BR> }<BR>}<BR>";
-		String p3 = "Which code fragment when added to the doCalculation method independently will make the code reliably print 13 to the console?<BR>Choose one.";
+		String p1 = "Given the following code and assuming the numbers at the left are line numbers, not part of the source file:" ;
+		String p2 = " 11: public class Ex2<T extends Runnable, String> { <BR> 12: String s = \"Hello\";<BR> 13: public void test(T t) {<BR> 14: t.run();<BR> 15: }<BR> 16: }<BR>";
+		String p3 = "Which one of the following is true ?";
 		List opt = new ArrayList<String>();
-		opt.add(Arrays.asList( "A.) CyclicBarrier cb = new CyclicBarrier(2, () -> {# out.print(results.stream().mapToInt(v -> v.intValue()).sum());# });# new Calculator(cb, 2).start();# new Calculator(cb, 3).start();#".split("#")));
-		opt.add(Arrays.asList( "B.) CyclicBarrier cb = new CyclicBarrier(2);<BR> out.print(results.stream().mapToInt(v -> v.intValue()).sum());<BR> new Calculator(cb, 2).start();<BR> new Calculator(cb, 3).start();<BR>".split("<BR>")));
-	    opt.add(Arrays.asList( "C.) CyclicBarrier cb = new CyclicBarrier(3);<BR> new Calculator(cb, 2).start();<BR> new Calculator(cb, 3).start();<BR> cb.await();<BR> out.print(results.stream().mapToInt(v -> v.intValue()).sum());<BR>".split("<BR>")));;
-        opt.add(Arrays.asList( "D.) CyclicBarrier cb = new CyclicBarrier(2); <BR> new Calculator(cb, 2).start();<BR> new Calculator(cb, 3).start();<BR> out.print(results.stream().mapToInt(v -> v.intValue()).sum());<BR>".split("<BR>")));
+		opt.add(Arrays.asList( "A. Line 11 fails to compile.".split("<BR>")));
+		opt.add(Arrays.asList( "B. Line 12 fails to compile".split("<BR>")));
+	    opt.add(Arrays.asList( "C. Line 13 fails to compile.".split("<BR>")));;
+        opt.add(Arrays.asList( "D. Line 14 fails to compile.".split("<BR>")));
+        opt.add(Arrays.asList( "E. Compilation succeeds".split("<BR>")));
+
 			 
 		DO.setQ(1);
 		DO.setP1(p1);
 		DO.setP2(p2);
 		DO.setP3(p3);
 		DO.setOpt(opt);
+		DO.setCodeBlock(Boolean.FALSE);
 		DO.setQdate("01011988");
 
 		return gson.toJson(DO);
 	}
 
-	//@CrossOrigin(origins = "*")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "TheQuiz/cd", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getQuizChartByDate(@RequestParam(value = "d", defaultValue = "") String date) {
 		chartObj CO = new chartObj(1, 0.0, 0.0);
 		return gson.toJson(CO);
 	}
 
-	//@CrossOrigin(origins = "*")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "TheQuiz/sbd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String submitQuiz(@RequestBody String payload) {
 		Constance.NO_SUBMITS++;
@@ -69,7 +72,7 @@ public class QuizController {
 		Resp resp = new Resp();
 		resp.setQ(1);
 		resp.setTitle("Answer for Question " + resp.getQ());
-		resp.setAns("The correct option is A. The CyclicBarrier class is a feature of the java.util.concurrent package and it provides timing synchronization among threads, while also ensuring that data written by those threads prior to the synchronization is visible among those threads (this is the so-called “happensbefore” relationship). These problems might otherwise have been addressed using the synchronized, wait, and notify mechanisms, but they are generally considered low-level and harder to use correctly.");
+		resp.setAns("Option B is correct.");
 		resp.setQdate("01011988");
 
 		for (int i = 0; i < CORRECT_ANS.size(); i++) {

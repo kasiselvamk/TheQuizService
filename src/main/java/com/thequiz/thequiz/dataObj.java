@@ -38,7 +38,15 @@ public class dataObj {
     String p2;
     String p3;
     String qdate;
-    public String getQdate() {
+    Boolean codeblock = Boolean.FALSE;
+    
+    public Boolean isCodeBlock() {
+		return codeblock;
+	}
+	public void setCodeBlock(Boolean codeBlock) {
+		this.codeblock = codeBlock;
+	}
+	public String getQdate() {
 		return qdate;
 	}
 	public void setQdate(String qdate) {
