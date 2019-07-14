@@ -9,7 +9,6 @@ public class chartObj {
      	this.setQ(i);
     	this.setVal(Arrays.asList(lArr));
 	}
-	
 	Integer q;
     public Integer getQ() {
 		return q;

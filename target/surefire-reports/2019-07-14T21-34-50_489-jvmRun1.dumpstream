@@ -1,0 +1,37 @@
+# Created at 2019-07-14T21:35:12.032
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created at 2019-07-14T21:35:12.249
+Unexpected IOException with stream: 2019-07-14 21:35:12.248  INFO 4477 --- [           main] c.t.thequiz.ThequizApplicationTests      : Starting ThequizApplicationTests on Kasiselvams-MacBook-Air.local with PID 4477 (started by kasiselvamk in /Users/kasiselvamk/eclipse-workspace/TheQuiz)
+
+
+# Created at 2019-07-14T21:35:12.251
+Unexpected IOException with stream: 2019-07-14 21:35:12.250  INFO 4477 --- [           main] c.t.thequiz.ThequizApplicationTests      : No active profile set, falling back to default profiles: default
+
+
+# Created at 2019-07-14T21:35:14.694
+Unexpected IOException with stream: 2019-07-14 21:35:14.693  INFO 4477 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+
+
+# Created at 2019-07-14T21:35:15.180
+Unexpected IOException with stream: 2019-07-14 21:35:15.180  INFO 4477 --- [           main] c.t.thequiz.ThequizApplicationTests      : Started ThequizApplicationTests in 18.292 seconds (JVM running for 19.508)
+
+
+# Created at 2019-07-14T21:35:15.212
+Unexpected IOException: 5,1,com.thequiz.thequiz.ThequizApplicationTests,contextLoads(com.thequiz.thequiz.ThequizApplicationTests),null,null,null
+
+
+# Created at 2019-07-14T21:35:15.861
+Unexpected IOException: 6,1,com.thequiz.thequiz.ThequizApplicationTests,contextLoads(com.thequiz.thequiz.ThequizApplicationTests),null,null,null
+
+
+# Created at 2019-07-14T21:35:15.862
+Unexpected IOException: 2,1,org.apache.maven.surefire.junit4.JUnit4Provider,com.thequiz.thequiz.ThequizApplicationTests,null,null,null
+
+
